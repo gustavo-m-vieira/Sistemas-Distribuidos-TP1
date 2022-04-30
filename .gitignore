@@ -1,0 +1,4 @@
+.vscode/
+pipes/main
+signals/receiveSignals
+signals/sendSignals
