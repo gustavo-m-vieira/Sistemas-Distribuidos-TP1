@@ -4,20 +4,6 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-char *checkPrime(char* numero) {
-  int i=0;        
-  int n = atoi(numero);
-  if (n == 1) {
-    return "eh primo\n";
-  }
-  for (i=2;i<=n/2;i++) {
-    if(n%i==0) {
-      return "nao eh primo\n";
-    }
-  }
-  return "eh primo\n";
-}
-
 int main(void)
 {
     int socket_desc, client_sock, client_size;
@@ -67,7 +53,7 @@ int main(void)
         printf("Falha no recebimento\n");
         return -1;
     }
-    printf("Numero recebido: %s\n", client_message);
+    printf("NVeredito: %s\n", client_message);
     
     // Resposta ao cliente:
     server_message = checkPrime(client_message);
