@@ -6,7 +6,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-int generate_random(int n) {
+int generateRandom(int n) {
     int r = rand() % 100;
     return n + r;
 }
@@ -40,7 +40,7 @@ int main(void)
     }
     
     // Gerando numero para envio:
-    atoa(random,client_message,DECIMAL);
+    atoa(generateRandom(random),client_message,DECIMAL);
     printf("Numero Gerado: %s\n", client_message);
     
     // Enviando mensagem:
