@@ -11,6 +11,20 @@ int generateRandom(int n) {
     return n + r;
 }
 
+char *checkPrime(char* numero) {
+  int i=0;        
+  int n = atoi(numero);
+  if (n == 1) {
+    return "eh primo\n";
+  }
+  for (i=2;i<=n/2;i++) {
+    if(n%i==0) {
+      return "nao eh primo\n";
+    }
+  }
+  return "eh primo\n";
+}
+
 int main(void)
 {
     int socket_desc, random;
@@ -40,8 +54,10 @@ int main(void)
     }
     
     // Gerando numero para envio:
-    atoa(generateRandom(random),client_message,DECIMAL);
-    printf("Numero Gerado: %s\n", client_message);
+    random = generateRandom(random);
+    printf("Numero Gerado: %i\n", random);
+    client_message = checkPrime(random)
+
     
     // Enviando mensagem:
     if(send(socket_desc, client_message, strlen(client_message), 0) < 0){
@@ -54,8 +70,6 @@ int main(void)
         printf("Erro na resposta\n");
         return -1;
     }
-    
-    printf("Veredito do Servidor: %s\n",server_message);
     
     // Fechar socket:
     close(socket_desc);
