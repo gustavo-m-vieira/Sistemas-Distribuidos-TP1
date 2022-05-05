@@ -25,7 +25,7 @@ int main(void)
     socket_desc = socket(AF_INET, SOCK_STREAM, 0);
     
     if(socket_desc < 0){
-        printf("UNão foi possível criar socket\n");
+        printf("Nao foi possível criar socket\n");
         return -1;
     }
     
@@ -35,12 +35,13 @@ int main(void)
     server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     
     if(connect(socket_desc, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0){
-        printf("Unable to connect\n");
+        printf("Erro na Conexao\n");
         return -1;
     }
     
     // Gerando numero para envio:
-    atoa(random,client_message,DECIMAL)
+    atoa(random,client_message,DECIMAL);
+    printf("Numero Gerado: %s\n", client_message);
     
     // Enviando mensagem:
     if(send(socket_desc, client_message, strlen(client_message), 0) < 0){
@@ -54,7 +55,7 @@ int main(void)
         return -1;
     }
     
-    printf("VEredito do Servidor: %s\n",server_message);
+    printf("Veredito do Servidor: %s\n",server_message);
     
     // Fechar socket:
     close(socket_desc);
